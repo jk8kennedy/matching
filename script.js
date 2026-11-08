@@ -137,6 +137,42 @@ const vocabulary = {
 };
 
 
+// Emoji shown on the hidden side of each matching pair.
+const wordEmojis = {
+    "Apple":"🍎", "Rice / Meal":"🍚", "Water":"💧", "Bread":"🍞",
+    "Egg":"🥚", "Fish":"🐟", "Meat":"🥩", "Vegetables":"🥦",
+    "Fruit":"🍇", "Tea":"🍵", "Milk":"🥛", "Cheese":"🧀",
+    "Chicken":"🍗", "Pork":"🥓", "Beef":"🥩", "Salt":"🧂",
+    "Sugar":"🍬", "Soy sauce":"🫙", "Miso":"🍲", "Juice":"🧃",
+    "One":"1️⃣", "Two":"2️⃣", "Three":"3️⃣", "Four":"4️⃣",
+    "Five":"5️⃣", "Six":"6️⃣", "Seven":"7️⃣", "Eight":"8️⃣",
+    "Nine":"9️⃣", "Ten":"🔟", "Eleven":"🔢", "Twelve":"🔢",
+    "Thirteen":"🔢", "Fourteen":"🔢", "Fifteen":"🔢", "Sixteen":"🔢",
+    "Seventeen":"🔢", "Eighteen":"🔢", "Nineteen":"🔢", "Twenty":"💯",
+    "Hello":"👋", "Good morning":"🌅", "Good morning (polite)":"🌞",
+    "Good evening":"🌆", "Goodbye":"👋", "See you":"🤝", "See you later":"👋",
+    "Good night":"🌙", "Good night (polite)":"😴", "Thank you":"🙏",
+    "Thank you (polite)":"💐", "You're welcome":"😊", "Excuse me":"🙋",
+    "I'm sorry":"🙇", "Yes":"👍", "No":"🙅", "Please":"🙏",
+    "Nice to meet you":"🤝", "Said before eating":"🍽️", "Thanks for the meal":"😋",
+    "Person":"🧑", "Man":"👨", "Woman":"👩", "Child":"🧒", "Friend":"🫂",
+    "Family":"👨‍👩‍👧", "Mother":"👩", "Father":"👨",
+    "Older sister (my family)":"👧", "Older brother (my family)":"👦",
+    "Younger sister":"👧", "Younger brother":"👦", "Teacher":"🧑‍🏫",
+    "Student":"🎒", "Doctor":"🧑‍⚕️", "Nurse":"👩‍⚕️", "Office worker":"💼",
+    "Shop assistant":"🛍️", "Grandfather":"👴", "Grandmother":"👵",
+    "Book":"📚", "Pen":"🖊️", "Desk":"🗄️", "Chair":"🪑", "Bag":"🎒",
+    "Telephone":"📞", "Clock / Watch":"⏰", "Shoes":"👟", "Key":"🔑",
+    "Window":"🪟", "Door":"🚪", "Car":"🚗", "Bicycle":"🚲",
+    "Umbrella":"☂️", "Wallet":"👛", "Glasses":"👓", "Pencil":"✏️",
+    "Eraser":"🧽", "Camera":"📷", "Television":"📺"
+};
+
+function getWordEmoji(word) {
+    return wordEmojis[word.en] || "✨";
+}
+
+
 // ======================================
 // 2. GAME VARIABLES
 // ======================================
