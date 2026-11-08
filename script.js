@@ -434,7 +434,6 @@ function checkMatch() {
     const first = selectedCards[0];
     const second = selectedCards[1];
 
-
     // Cards must have the same pair ID
     // but different types (Japanese and English)
 
@@ -471,6 +470,11 @@ function checkMatch() {
             document.getElementById("message").textContent =
                 "🎉 Amazing! You found all 10 pairs!";
 
+            // Return to the main menu after 2 seconds
+            setTimeout(() => {
+                showMenu();
+            }, 2000);
+
         }
 
     } else {
@@ -495,8 +499,6 @@ function checkMatch() {
     }
 
 }
-
-
 // ======================================
 // 8. UPDATE PROGRESS
 // ======================================
