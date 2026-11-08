@@ -8,77 +8,188 @@
 
     <title>Japanese Word Match</title>
 
-    <!-- Link to CSS file -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="container">
+    <main class="container">
 
         <!-- MAIN MENU -->
+
         <section id="menu">
 
-            <h1>日本語 Word Match</h1>
+            <div class="brand">
+                <span class="brand-icon">日本</span>
+                <span>JAPANESE WORD MATCH</span>
+            </div>
 
-            <p>Choose a subject to practise your Japanese!</p>
+            <div class="hero">
+
+                <div class="hero-tag">
+                    ✨ YOUR JAPANESE ADVENTURE STARTS HERE
+                </div>
+
+                <h1>
+                    Learn Japanese.<br>
+                    <span>One match at a time.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Pick a subject, flip the cards and discover
+                    how many Japanese words you know!
+                </p>
+
+            </div>
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>Choose your subject</h2>
+                    <p>What would you like to practise today?</p>
+                </div>
+
+                <span class="word-count">5 SUBJECTS</span>
+
+            </div>
+
 
             <div class="subjects">
 
-                <button onclick="startGame('Food')">
-                    🍱 Food
+                <button class="subject-card food"
+                    onclick="startGame('Food')">
+
+                    <span class="subject-icon">🍱</span>
+                    <span class="subject-name">Food</span>
+                    <span class="subject-detail">Food & drink</span>
+                    <span class="subject-arrow">↗</span>
+
                 </button>
 
-                <button onclick="startGame('Numbers')">
-                    🔢 Numbers
+
+                <button class="subject-card numbers"
+                    onclick="startGame('Numbers')">
+
+                    <span class="subject-icon">🔢</span>
+                    <span class="subject-name">Numbers</span>
+                    <span class="subject-detail">Count in Japanese</span>
+                    <span class="subject-arrow">↗</span>
+
                 </button>
 
-                <button onclick="startGame('Greetings')">
-                    👋 Greetings
+
+                <button class="subject-card greetings"
+                    onclick="startGame('Greetings')">
+
+                    <span class="subject-icon">👋</span>
+                    <span class="subject-name">Greetings</span>
+                    <span class="subject-detail">Everyday expressions</span>
+                    <span class="subject-arrow">↗</span>
+
                 </button>
 
-                <button onclick="startGame('People')">
-                    👥 People
+
+                <button class="subject-card people"
+                    onclick="startGame('People')">
+
+                    <span class="subject-icon">👥</span>
+                    <span class="subject-name">People</span>
+                    <span class="subject-detail">Family & friends</span>
+                    <span class="subject-arrow">↗</span>
+
                 </button>
 
-                <button onclick="startGame('Everyday Objects')">
-                    🏠 Everyday Objects
+
+                <button class="subject-card objects"
+                    onclick="startGame('Everyday Objects')">
+
+                    <span class="subject-icon">🏠</span>
+                    <span class="subject-name">Everyday Objects</span>
+                    <span class="subject-detail">Things around you</span>
+                    <span class="subject-arrow">↗</span>
+
                 </button>
 
+            </div>
+
+
+            <div class="menu-footer">
+                <span>日本語を楽しもう！</span>
+                <span>Enjoy learning Japanese!</span>
             </div>
 
         </section>
 
 
         <!-- GAME SCREEN -->
+
         <section id="game" class="hidden">
 
-            <h1 id="subjectTitle">Food</h1>
+            <div class="game-header">
 
-            <p>
-                Match the Japanese words with their English translations.
-            </p>
+                <button class="back-button" onclick="showMenu()">
+                    ← Subjects
+                </button>
 
-            <div class="game-info">
+                <span class="game-label">MEMORY CHALLENGE</span>
+
+            </div>
+
+
+            <div class="game-intro">
+
+                <div class="game-icon" id="gameIcon">🍱</div>
+
+                <h1 id="subjectTitle">Food</h1>
 
                 <p>
-                    Pairs found:
-                    <span id="score">0</span> / 10
+                    Find the Japanese words and their English matches.
                 </p>
 
             </div>
 
+
+            <!-- PROGRESS -->
+
+            <div class="progress-container">
+
+                <div class="progress-top">
+                    <span>YOUR PROGRESS</span>
+                    <span id="score">0 / 10 pairs</span>
+                </div>
+
+                <div class="progress-track">
+                    <div id="progressBar" class="progress-fill"></div>
+                </div>
+
+            </div>
+
+
+            <!-- GAME BOARD -->
+
             <div id="gameBoard" class="game-board"></div>
 
-            <p id="message"></p>
+
+            <!-- GAME MESSAGE -->
+
+            <div id="message" class="message"></div>
+
 
             <div class="game-buttons">
 
-                <button onclick="startGame(currentSubject)">
-                    Play Again
+                <button class="primary-button"
+                    onclick="startGame(currentSubject)">
+                    ↻ Play Again
                 </button>
 
-                <button onclick="showMenu()">
+                <button class="secondary-button"
+                    onclick="showMenu()">
                     Main Menu
                 </button>
 
@@ -86,10 +197,11 @@
 
         </section>
 
-    </div>
+    </main>
 
 
-    <!-- Link to JavaScript file -->
+    <!-- JAVASCRIPT -->
+
     <script src="script.js"></script>
 
 </body>
