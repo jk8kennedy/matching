@@ -1,0 +1,175 @@
+
+/* GENERAL PAGE STYLING */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6fa;
+    color: #263238;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #334e68;
+}
+
+.container {
+    max-width: 750px;
+    margin: 40px auto;
+}
+
+
+/* MAIN MENU */
+
+.subjects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+}
+
+button {
+    font-size: 17px;
+    padding: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #527da5;
+    color: white;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #365f85;
+}
+
+.subjects button {
+    min-height: 85px;
+}
+
+
+/* GAME INFORMATION */
+
+.game-info {
+    margin: 20px 0;
+}
+
+
+/* GAME BOARD */
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 25px;
+}
+
+
+/* INDIVIDUAL CARDS */
+
+.card {
+    min-height: 105px;
+    padding: 10px;
+    background: #527da5;
+    border-radius: 10px;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    font-size: 19px;
+    border: 3px solid transparent;
+    user-select: none;
+}
+
+.card:hover {
+    background: #365f85;
+}
+
+.card.flipped {
+    background: white;
+    color: #263238;
+    border-color: #527da5;
+    cursor: default;
+}
+
+.card.matched {
+    background: #d8f3dc;
+    color: #245b35;
+    border-color: #65a879;
+    cursor: default;
+}
+
+
+/* JAPANESE AND ENGLISH TEXT */
+
+.japanese {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.romaji {
+    font-size: 13px;
+    margin-top: 5px;
+    color: #64748b;
+}
+
+.english {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+
+/* GENERAL GAME ELEMENTS */
+
+.hidden {
+    display: none;
+}
+
+.game-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.game-buttons button {
+    font-size: 15px;
+    padding: 12px 20px;
+}
+
+#message {
+    font-weight: bold;
+    min-height: 25px;
+    margin-top: 15px;
+}
+
+
+/* MOBILE RESPONSIVE DESIGN */
+
+@media (max-width: 500px) {
+
+    .game-board {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .card {
+        min-height: 95px;
+        font-size: 16px;
+    }
+
+    .japanese {
+        font-size: 20px;
+    }
+
+}
