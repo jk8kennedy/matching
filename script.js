@@ -21,7 +21,7 @@ const vocabulary = {
         { jp: "チーズ", romaji: "Chiizu", en: "Cheese" },
         { jp: "とりにく", romaji: "Toriniku", en: "Chicken" },
         { jp: "ぶたにく", romaji: "Butaniku", en: "Pork" },
-        { jp: "うしにく", romaji: "Ushiniku", en: "Beef" },
+        { jp: "ぎゅうにく", romaji: "Gyuuniku", en: "Beef" },
         { jp: "しお", romaji: "Shio", en: "Salt" },
         { jp: "さとう", romaji: "Satou", en: "Sugar" },
         { jp: "しょうゆ", romaji: "Shouyu", en: "Soy sauce" },
@@ -234,13 +234,15 @@ function startGame(subject) {
             type: "japanese",
             content: word.jp,
             romaji: word.romaji,
-            pair: index
+            pair: index,
+            emoji: getWordEmoji(word)
         });
 
         cards.push({
             type: "english",
             content: word.en,
-            pair: index
+            pair: index,
+            emoji: getWordEmoji(word)
         });
 
     });
@@ -266,13 +268,7 @@ function startGame(subject) {
             <div class="card-inner">
 
                 <div class="card-face card-back">
-
-                    <span class="card-back-mark">?</span>
-
-                    <span class="card-back-label">
-                        MATCH ME
-                    </span>
-
+                    <span class="card-back-emoji" aria-hidden="true">${card.emoji}</span>
                 </div>
 
                 <div class="card-face card-front">
