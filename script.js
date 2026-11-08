@@ -131,6 +131,29 @@ const vocabulary = {
         { jp: "カメラ", romaji: "Kamera", en: "Camera" },
         { jp: "テレビ", romaji: "Terebi", en: "Television" }
 
+    ],
+
+"Travel & Places": [
+        { jp: "えき", romaji: "Eki", en: "Station" },
+        { jp: "くうこう", romaji: "Kuukou", en: "Airport" },
+        { jp: "ホテル", romaji: "Hoteru", en: "Hotel" },
+        { jp: "きっぷ", romaji: "Kippu", en: "Ticket" },
+        { jp: "ちず", romaji: "Chizu", en: "Map" },
+        { jp: "みち", romaji: "Michi", en: "Road / Way" },
+        { jp: "くに", romaji: "Kuni", en: "Country" },
+        { jp: "まち", romaji: "Machi", en: "Town / City" },
+        { jp: "おてらい", romaji: "Otera", en: "Temple" },
+        { jp: "じんじゃ", romaji: "Jinja", en: "Shrine" },
+        { jp: "うみ", romaji: "Umi", en: "Sea / Beach" },
+        { jp: "やま", romaji: "Yama", en: "Mountain" },
+        { jp: "こうはん", romaji: "Kouen", en: "Park" },
+        { jp: "みせ", romaji: "Mise", en: "Shop / Store" },
+        { jp: "レストラン", romaji: "Resutoran", en: "Restaurant" },
+        { jp: "トイレ", romaji: "Toire", en: "Restroom" },
+        { jp: "バス", romaji: "Basu", en: "Bus" },
+        { jp: "でんしゃ", romaji: "Densha", en: "Train" },
+        { jp: "ひこうき", romaji: "Hikouki", en: "Airplane" },
+        { jp: "かばん", romaji: "Ryokou", en: "Travel" }
     ]
 
 };
@@ -194,7 +217,8 @@ const subjectIcons = {
     Numbers: "🔢",
     Greetings: "👋",
     People: "👥",
-    "Everyday Objects": "🏠"
+    "Everyday Objects": "🏠",
+    "Travel & Places": "✈️"  // <-- Added here
 };
 
 
