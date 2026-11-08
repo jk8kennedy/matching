@@ -1,4 +1,3 @@
-
 // ======================================
 // 1. VOCABULARY BANK
 // ======================================
@@ -137,39 +136,9 @@ const vocabulary = {
 };
 
 
-// Emoji shown on the hidden side of each matching pair.
-const wordEmojis = {
-    "Apple":"🍎", "Rice / Meal":"🍚", "Water":"💧", "Bread":"🍞",
-    "Egg":"🥚", "Fish":"🐟", "Meat":"🥩", "Vegetables":"🥦",
-    "Fruit":"🍇", "Tea":"🍵", "Milk":"🥛", "Cheese":"🧀",
-    "Chicken":"🍗", "Pork":"🥓", "Beef":"🥩", "Salt":"🧂",
-    "Sugar":"🍬", "Soy sauce":"🫙", "Miso":"🍲", "Juice":"🧃",
-    "One":"1️⃣", "Two":"2️⃣", "Three":"3️⃣", "Four":"4️⃣",
-    "Five":"5️⃣", "Six":"6️⃣", "Seven":"7️⃣", "Eight":"8️⃣",
-    "Nine":"9️⃣", "Ten":"🔟", "Eleven":"🔢", "Twelve":"🔢",
-    "Thirteen":"🔢", "Fourteen":"🔢", "Fifteen":"🔢", "Sixteen":"🔢",
-    "Seventeen":"🔢", "Eighteen":"🔢", "Nineteen":"🔢", "Twenty":"💯",
-    "Hello":"👋", "Good morning":"🌅", "Good morning (polite)":"🌞",
-    "Good evening":"🌆", "Goodbye":"👋", "See you":"🤝", "See you later":"👋",
-    "Good night":"🌙", "Good night (polite)":"😴", "Thank you":"🙏",
-    "Thank you (polite)":"💐", "You're welcome":"😊", "Excuse me":"🙋",
-    "I'm sorry":"🙇", "Yes":"👍", "No":"🙅", "Please":"🙏",
-    "Nice to meet you":"🤝", "Said before eating":"🍽️", "Thanks for the meal":"😋",
-    "Person":"🧑", "Man":"👨", "Woman":"👩", "Child":"🧒", "Friend":"🫂",
-    "Family":"👨‍👩‍👧", "Mother":"👩", "Father":"👨",
-    "Older sister (my family)":"👧", "Older brother (my family)":"👦",
-    "Younger sister":"👧", "Younger brother":"👦", "Teacher":"🧑‍🏫",
-    "Student":"🎒", "Doctor":"🧑‍⚕️", "Nurse":"👩‍⚕️", "Office worker":"💼",
-    "Shop assistant":"🛍️", "Grandfather":"👴", "Grandmother":"👵",
-    "Book":"📚", "Pen":"🖊️", "Desk":"🗄️", "Chair":"🪑", "Bag":"🎒",
-    "Telephone":"📞", "Clock / Watch":"⏰", "Shoes":"👟", "Key":"🔑",
-    "Window":"🪟", "Door":"🚪", "Car":"🚗", "Bicycle":"🚲",
-    "Umbrella":"☂️", "Wallet":"👛", "Glasses":"👓", "Pencil":"✏️",
-    "Eraser":"🧽", "Camera":"📷", "Television":"📺"
-};
-
-function getWordEmoji(word) {
-    return wordEmojis[word.en] || "✨";
+// Get category emoji for the back of cards
+function getSubjectEmoji(subject) {
+    return subjectIcons[subject] || "✨";
 }
 
 
@@ -183,6 +152,37 @@ let matchedPairs = 0;
 let lockBoard = false;
 
 const numberOfPairs = 10;
+
+
+// Sound Effect Generator (Web Audio API)
+function playMatchSound() {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+
+    const ctx = new AudioContext();
+
+    // Play a cheerful two-tone chime (E5 -> A5)
+    const notes = [523.25, 659.25, 783.99]; // C5, E5, G5 major chord arpeggio
+    notes.forEach((freq, index) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = "sine";
+        osc.frequency.value = freq;
+
+        const startTime = ctx.currentTime + index * 0.08;
+        const stopTime = startTime + 0.25;
+
+        gain.gain.setValueAtTime(0.15, startTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, stopTime);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(startTime);
+        osc.stop(stopTime);
+    });
+}
 
 
 // ======================================
@@ -264,6 +264,8 @@ function startGame(subject) {
 
     let cards = [];
 
+    const categoryEmoji = getSubjectEmoji(subject);
+
     selectedWords.forEach((word, index) => {
 
         cards.push({
@@ -271,14 +273,14 @@ function startGame(subject) {
             content: word.jp,
             romaji: word.romaji,
             pair: index,
-            emoji: getWordEmoji(word)
+            emoji: categoryEmoji
         });
 
         cards.push({
             type: "english",
             content: word.en,
             pair: index,
-            emoji: getWordEmoji(word)
+            emoji: categoryEmoji
         });
 
     });
@@ -425,6 +427,9 @@ function checkMatch() {
 
         first.element.classList.add("matched");
         second.element.classList.add("matched");
+
+        // Play victory chime sound
+        playMatchSound();
 
         matchedPairs++;
 
