@@ -153,7 +153,7 @@ const vocabulary = {
         { jp: "バス", romaji: "Basu", en: "Bus" },
         { jp: "でんしゃ", romaji: "Densha", en: "Train" },
         { jp: "ひこうき", romaji: "Hikouki", en: "Airplane" },
-        { jp: "かばん", romaji: "Ryokou", en: "Travel" }
+        { jp: "かばん", romaji: "Kaban", en: "Travel" }
     ]
 
 };
